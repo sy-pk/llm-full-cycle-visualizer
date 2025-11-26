@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.token_utils import load_tokenizer, tokenize_text
+from utils.token_utils import load_tokenizer, tokenize_text, tokens_to_dataframe
 
 st.title("LLM Full Cycle Visualizer")
 
@@ -17,3 +17,9 @@ if text:
 
     st.subheader("Token IDs:")
     st.write(token_ids)
+
+    # Display token information in a table
+    df = tokens_to_dataframe(tokens, token_ids)
+
+    st.subheader("Token Information Table:")
+    st.dataframe(df, use_container_width=True)
