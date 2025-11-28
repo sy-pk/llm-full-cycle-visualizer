@@ -1,0 +1,29 @@
+[project]
+name = "llm-full-cycle-visualizer"
+version = "0.1.0"
+description = "LLM internal visualization tool"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "pre-commit"
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+skip-string-normalization = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+fix = true
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

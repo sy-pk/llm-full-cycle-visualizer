@@ -1,29 +1,23 @@
 import streamlit as st
 
-from utils.token_utils import (
-    load_tokenizer, 
-    tokenize_text, 
-    tokens_to_dataframe
-)
+from utils.model_utils import get_position_embedding, get_token_embedding, load_model
+from utils.token_utils import load_tokenizer, tokenize_text, tokens_to_dataframe
+from utils.visualization_utils import plot_vector_heatmap
 
-from utils.model_utils import (
-    load_model, 
-    get_token_embedding, 
-    get_position_embedding
-)
-
-from utils.visualization_utils import (
-    plot_vector_heatmap
-)
 
 def load_css(file_path):
     with open(file_path) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
+
 def add_tooltip(text, tooltip_dictionary):
     for term, tip in tooltip_dictionary.items():
-        text = text.replace(term, f'<span class="tooltip">{term}<span class="tooltiptext">{tip}</span></span>')
+        text = text.replace(
+            term,
+            f'<span class="tooltip">{term}<span class="tooltiptext">{tip}</span></span>',
+        )
     return text
+
 
 def md(text):
     processed = add_tooltip(text, tooltip_dictionary)
@@ -41,12 +35,14 @@ tooltip_dictionary = {
 
 st.title("🧠 LLM Full Cycle Visualizer")
 
-md("""
+md(
+    """
 Ever wondered how AI models like ChatGPT or Gemini manage to respond so much like humans?
 
 This application lets you peek inside LLM to see what happens between your input 
 and the AI's answer, almost like an X-ray. 
-""")
+"""
+)
 
 st.subheader("Input Text")
 user_input_text = st.text_input("Enter a sentence: ")
@@ -56,10 +52,12 @@ if user_input_text:
     tokens, token_ids = tokenize_text(tokenizer, user_input_text)
 
     st.subheader("1. Splitting into Tokens:")
-    st.markdown("""A sentence like \"Hello world!\" looks simple to us, but for AI, 
-    it must be broken into smaller pieces called tokens.""")
+    st.markdown(
+        """A sentence like \"Hello world!\" looks simple to us, but for AI, 
+    it must be broken into smaller pieces called tokens."""
+    )
     st.write(tokens)
-    
+
     # Get the vocabulary as a dictionary
     vocab = tokenizer.get_vocab()
 
@@ -80,10 +78,7 @@ if user_input_text:
 
     # Select token for Embedding Visualization
     selected_token_index = st.slider(
-        label="Select a token index:",
-        min_value=0,
-        max_value=len(tokens) - 1,
-        value=0
+        label="Select a token index:", min_value=0, max_value=len(tokens) - 1, value=0
     )
 
     selected_token = tokens[selected_token_index]
@@ -106,7 +101,8 @@ if user_input_text:
     st.subheader("Combined Embedding (Token + Position):")
     st.pyplot(plot_vector_heatmap(combined_embedding_vector, "Combined Embedding"))
 
-st.markdown("""
+st.markdown(
+    """
 <hr style='margin-top: 60px; margin-bottom: 20px; border: 1px solid #444;'>
             
 <details>
@@ -127,4 +123,6 @@ Curran Associates Inc., New York, NY, 1877–1901.
 PDF: [NeurIPS Proceedings (2020)](https://proceedings.neurips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf)
 
 </details>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
