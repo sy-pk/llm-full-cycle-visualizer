@@ -1,4 +1,7 @@
-# 🧠 LLM Full Cycle Visualizer (Work In Process)
+# LLM Full Cycle Visualizer (Work In Process)
+
+[![Streamlit Live Demo](https://img.shields.io/badge/Streamlit%20Live%20Demo-FF4B4B?logo=streamlit&logoColor=white)](https://sy-pk-llm-full-cycle-visualizer-app-gdqz1p.streamlit.app/)
+
 
 This program is an educational tool designed to reveal the internal computation steps of transformer-based Large Language Models (LLMs).
 
