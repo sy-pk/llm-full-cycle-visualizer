@@ -63,7 +63,7 @@ if user_input_text:
 
     # Get the size of the vocabulary
     vocab_size = len(vocab)
-    st.write(f"DistilGPT2's vocabulary size (same tokenizer as GPT-2): {vocab_size}")
+    st.write(f"GPT2's vocabulary size: {vocab_size}")
 
     st.link_button("OpenAI Tokenizer", "https://platform.openai.com/tokenizer")
 

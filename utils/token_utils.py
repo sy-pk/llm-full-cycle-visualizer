@@ -2,7 +2,7 @@ import pandas as pd
 from transformers import AutoTokenizer
 
 
-def load_tokenizer(model_name="distilgpt2"):
+def load_tokenizer(model_name="gpt2"):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     return tokenizer
 

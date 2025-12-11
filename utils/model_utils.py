@@ -1,7 +1,7 @@
 from transformers import AutoModelForCausalLM
 
 
-def load_model(model_name="distilgpt2"):
+def load_model(model_name="gpt2"):
     model = AutoModelForCausalLM.from_pretrained(model_name)
     model.eval()
     return model
