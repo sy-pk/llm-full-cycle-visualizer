@@ -29,6 +29,10 @@ load_css("styles/tooltip.css")
 tokenizer = load_tokenizer()
 model = load_model()
 
+p = next(model.parameters())
+st.write("Device:", p.device)
+st.write("Is meta?:", p.is_meta)
+
 tooltip_dictionary = {
     "LLM": "Large Language Model",
 }
