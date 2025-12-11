@@ -3,7 +3,10 @@ from transformers import AutoModelForCausalLM
 
 def load_model(model_name="gpt2"):
     model = AutoModelForCausalLM.from_pretrained(
-        model_name, device_map=None, low_cpu_mem_usage=False
+        model_name,
+        low_cpu_mem_usage=False,
+        torch_dtype="float32",
+        _fast_init=False,
     )
     model.eval()
     return model
