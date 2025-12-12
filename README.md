@@ -31,9 +31,11 @@ Users can also experiment with sample inputs to manually trace through intermedi
 <br>
 
 ## Technical Stack
-- Model: GPT-2 (lightweight and runs well on CPU)
+- Model: GPT-2 (HuggingFace transformers)
 - Framwork: Streamlit
-- Visualization: Matplotlib / Seaborn
+- Computation: PyTorch, Numpy
+- Visualization: Matplotlib
+- Data Handling: Pandas
 
 <br>
 
